@@ -56,7 +56,6 @@ def dadosTab2(program, values):
     planilhaKeys = []
     for key, value in values.items():
         planilhaKeys.append(key)
-        print(f"{key}: {value}")
     return values
 
 def dadosTab3(program, values):
@@ -120,3 +119,4 @@ def dadosTab3(program, values):
     infodict = extract_info(program)
     for label, value in infodict.items():
             values[label] = value
+    return values
