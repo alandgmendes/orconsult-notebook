@@ -1,8 +1,8 @@
-from pyppeteer import launch
 def foo():
     print('ello foo')
 
 async def scrap(urltoScrap):
+    from pyppeteer import launch
     browser = await launch(executablePath='/usr/bin/google-chrome-stable', headless=True, args=['--no-sandbox'])
     page = await browser.newPage()
     await page.goto(urltoScrap, {'waitUntil': 'networkidle2'})
