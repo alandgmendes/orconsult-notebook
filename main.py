@@ -119,4 +119,4 @@ def dadosTab3(program, values):
     infodict = extract_info(program)
     for label, value in infodict.items():
             values[label] = value
-    return values
+    return infodict
