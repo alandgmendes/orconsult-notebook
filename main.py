@@ -119,6 +119,8 @@ def dadosTab3(program, valuestab2):
 
         return info_dict
     infodict = extract_info(program)
+    print('>>>>>>>>>>>>')
+    print(infodict)
     for label, value in infodict.items():
             values[label] = value
     return infodict
