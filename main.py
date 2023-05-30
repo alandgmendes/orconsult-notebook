@@ -22,6 +22,7 @@ def dadosTab1(program):
             
             # Store the label-value pair in the data dictionary
             data[label] = value
+            print(label, value)
 
     #remove fundamentação data
     relevantValues = {}
