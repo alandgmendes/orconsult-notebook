@@ -58,8 +58,9 @@ def dadosTab2(program, values):
         planilhaKeys.append(key)
     return values
 
-def dadosTab3(program, values):
+def dadosTab3(program, valuestab2):
     from bs4 import BeautifulSoup
+    values = valuestab2
     soup = BeautifulSoup(program, 'html.parser')
     class FieldCaixa:
         def __init__(self, label, value):
