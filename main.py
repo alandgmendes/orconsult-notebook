@@ -164,16 +164,8 @@ def obterDadosConsolidados(uri, inputValues):
     df['Unicity'] = df['ID_PROGRAMA'].astype(str) + df['UF_PROGRAMA'].astype(str) +\
     df['NATUREZA_JURIDICA_PROGRAMA'].astype(str) + \
     df['MODALIDADE_PROGRAMA'].astype(str) 
-    unicity = df["Unicity"].unique()
-    all_items = df["Unicity"]
     
-    df2 = df.drop_duplicates()
-    unique_itens_ids = df2["ID_PROGRAMA"].unique()
-
-    cols = df.columns
-    for col in cols:
-        print(col)
-    print('>>>>>>>>>>>>>>')
     keysrelev = relevantValues.keys()
     for key, value in relevantValues.items():
         print(f'campo: {key} || valor: {value}')
+    return df
