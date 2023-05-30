@@ -28,3 +28,4 @@ def dadosTab1(program):
     for label, value in data.items():
         if (not label.startswith('Decisão Fundamentada')):
             relevantValues[label] = value
+    return relevantValues
