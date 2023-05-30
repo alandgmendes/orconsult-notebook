@@ -98,7 +98,6 @@ def dadosTab3(program, valuestab2):
     for label, value in data.items():
         if not label.startswith('Decisão Fundamentada'):
             data2[label] = value
-            print(f'{data2[label]}: {value}')
     def extract_info(html_content):
         soup = BeautifulSoup(html_content, 'html.parser')
 
