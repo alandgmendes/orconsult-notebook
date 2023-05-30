@@ -122,3 +122,58 @@ def dadosTab3(program, valuestab2):
     for label, value in infodict.items():
             data2[label] = value
     return data2
+
+def obterDadosConsolidados(uri, inputValues):
+    from pymongo import MongoClient
+    import ast
+    import pandas as pd
+    from datetime import datetime
+
+    client = MongoClient(uri)
+    programas = client.Orconsult.programas
+    relevantValues = inputValues
+    # Sort the results by ID_PROGRAMA
+    sort = [('ID_PROGRAMA', 1)]
+
+    # Limit the number of results to 100
+    limit = 10000
+
+    # Perform the query
+    query = {"ANO_DISPONIBILIZACAO": 2023}
+    cursor = programas.find(query).sort(sort).limit(limit)
+
+    # Iterate over the cursor and print the results
+   
+    def fix_date_value(value):
+        if pd.isna(value) or value == 'nan':
+            return 'nan'
+        
+        try:
+            date_str = value.split('/')[0]
+            date = datetime.datetime.strptime(date_str, '%d/%m/%Y').date()
+            return date.strftime('%d/%m/%Y')
+        except ValueError:
+            return value
+
+    # Example ill-formed objects array
+    ill_formed_objects = cursor
+
+    def create_dataframe(objects):
+        return pd.DataFrame(objects)
+    df = create_dataframe(ill_formed_objects)
+    df['Unicity'] = df['ID_PROGRAMA'].astype(str) + df['UF_PROGRAMA'].astype(str) +\
+    df['NATUREZA_JURIDICA_PROGRAMA'].astype(str) + \
+    df['MODALIDADE_PROGRAMA'].astype(str) 
+    unicity = df["Unicity"].unique()
+    all_items = df["Unicity"]
+    
+    df2 = df.drop_duplicates()
+    unique_itens_ids = df2["ID_PROGRAMA"].unique()
+
+    cols = df.columns
+    for col in cols:
+        print(col)
+    print('>>>>>>>>>>>>>>')
+    keysrelev = relevantValues.keys()
+    for key, value in relevantValues.items():
+        print(f'campo: {key} || valor: {value}')
