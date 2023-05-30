@@ -1,12 +1,30 @@
 def foo():
     print('ello foo')
 
-async def scrap(urltoScrap):
-    from pyppeteer import launch
-    browser = await launch(executablePath='/usr/bin/google-chrome-stable', headless=True, args=['--no-sandbox'])
-    page = await browser.newPage()
-    await page.goto(urltoScrap, {'waitUntil': 'networkidle2'})
-    await page.waitForFunction('document.readyState === "complete"')
-    htmlContent = await page.content()
-    await browser.close()
-    return htmlContent
+def addData1(program):
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(program, 'html.parser')
+
+    #print(soup.prettify())
+    rows = soup.find_all('tr')
+
+    data = {}
+
+    # Iterate over the rows
+    for row in rows:
+        # Find the cells (td) in each row
+        cells = row.find_all('td')
+        
+        # Extract the label and value from the cells
+        if len(cells) == 2:
+            label = cells[0].text.strip()
+            value = cells[1].text.strip()
+            
+            # Store the label-value pair in the data dictionary
+            data[label] = value
+
+    #remove fundamentação data
+    relevantValues = {}
+    for label, value in data.items():
+        if (not label.startswith('Decisão Fundamentada')):
+            relevantValues[label] = value
