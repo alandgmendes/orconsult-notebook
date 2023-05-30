@@ -3,6 +3,7 @@ def foo():
 
 def dadosTab1(program):
     from bs4 import BeautifulSoup
+    print(program)
     soup = BeautifulSoup(program, 'html.parser')
 
     #print(soup.prettify())
