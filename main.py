@@ -1,7 +1,7 @@
 def foo():
     print('ello foo')
 
-def addData1(program):
+def dadosTab1(program):
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(program, 'html.parser')
 
