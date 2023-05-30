@@ -92,13 +92,13 @@ def dadosTab3(program, valuestab2):
             
             # Store the label-value pair in the data dictionary
             data[label] = value
-            print(f'{label}: {value}')
 
     # Remove 'fundamentação' data
+    data2 = {}
     for label, value in data.items():
         if not label.startswith('Decisão Fundamentada'):
-            values[label] = value
-            print(f'{values[label]}: {value}')
+            data2[label] = value
+            print(f'{data2[label]}: {value}')
     def extract_info(html_content):
         soup = BeautifulSoup(html_content, 'html.parser')
 
@@ -121,5 +121,5 @@ def dadosTab3(program, valuestab2):
         return info_dict
     infodict = extract_info(program)
     for label, value in infodict.items():
-            values[label] = value
-    return infodict
+            data2[label] = value
+    return data2
