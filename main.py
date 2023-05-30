@@ -1,6 +1,7 @@
+from pyppeteer import launch
 def foo():
     print('ello foo')
-    
+
 async def scrap(urltoScrap):
     browser = await launch(executablePath='/usr/bin/google-chrome-stable', headless=True, args=['--no-sandbox'])
     page = await browser.newPage()
