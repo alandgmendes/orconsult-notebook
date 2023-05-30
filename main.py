@@ -165,7 +165,5 @@ def obterDadosConsolidados(uri, inputValues):
     df['NATUREZA_JURIDICA_PROGRAMA'].astype(str) + \
     df['MODALIDADE_PROGRAMA'].astype(str) 
     
-    keysrelev = relevantValues.keys()
-    for key, value in relevantValues.items():
-        print(f'campo: {key} || valor: {value}')
+    
     return df
