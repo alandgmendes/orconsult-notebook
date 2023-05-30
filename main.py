@@ -92,6 +92,7 @@ def dadosTab3(program, valuestab2):
             
             # Store the label-value pair in the data dictionary
             data[label] = value
+            print(f'{label}: {value}')
 
     # Remove 'fundamentação' data
     for label, value in data.items():
@@ -119,8 +120,6 @@ def dadosTab3(program, valuestab2):
 
         return info_dict
     infodict = extract_info(program)
-    print('>>>>>>>>>>>>')
-    print(infodict)
     for label, value in infodict.items():
             values[label] = value
     return infodict
