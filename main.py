@@ -123,7 +123,7 @@ def dadosTab3(program, valuestab2):
             data2[label] = value
     return data2
 
-def obterDadosConsolidados(uri, inputValues):
+def obterDadosConsolidados(uri):
     from pymongo import MongoClient
     import ast
     import pandas as pd
@@ -131,7 +131,6 @@ def obterDadosConsolidados(uri, inputValues):
 
     client = MongoClient(uri)
     programas = client.Orconsult.programas
-    relevantValues = inputValues
     # Sort the results by ID_PROGRAMA
     sort = [('ID_PROGRAMA', 1)]
 
