@@ -165,5 +165,5 @@ def obterDadosConsolidados(uri, inputValues):
     df['NATUREZA_JURIDICA_PROGRAMA'].astype(str) + \
     df['MODALIDADE_PROGRAMA'].astype(str) 
     
-    
+    client.close()
     return df
