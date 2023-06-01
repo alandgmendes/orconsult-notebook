@@ -139,7 +139,7 @@ def obterDadosConsolidados(uri):
 
     # Perform the query
     query = {"ANO_DISPONIBILIZACAO": 2023}
-    cursor = programas.find(query).sort(sort).limit(limit)
+    cursor = programas.find(query).sort(sort)
 
     # Iterate over the cursor and print the results
    
